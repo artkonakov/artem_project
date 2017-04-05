@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <h2>{{userName}}</h2>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Изображение</th>
+                    <th>Линк на изображение</th>
+                    <th>Заголовок</th>
+                    <th>Клиент</th>
+                    <th>Описание</th>
+                    <th>Истекает</th>
+                    <th>Опубликовать</th>
+                    <th>Обновить</th>
+                    <th>Удалить</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="offer in offers">
+                    <th><img class="small-image" ng-src="{{offer.offer_url}}"></th>
+
+
+                    <th class="table-url" contenteditable="true" ng-model="offer.offer_url" strip-br="true" strip-tags="true" select-non-editable="true">
+                    </th>
+
+                    <th contenteditable="true" ng-model="offer.title" strip-br="true" strip-tags="true" select-non-editable="true">
+
+
+                    </th>
+                    <th>
+
+                        <select class="form-control" ng-model="offer.client">
+                        <option ng-repeat="client in clients">{{client.name}}</option>
+  
+                    </select>
+
+
+                    </th>
+                    <th contenteditable="true" ng-model="offer.description" strip-br="true" strip-tags="true" select-non-editable="true">
+
+
+                    </th>
+                    <th>
+
+                        <datepicker date-set="offer.expires" date-format="dd:MM:yyyy">
+                            <input ng-model="offer.expires" type="text" />
+                        </datepicker>
+
+                    </th>
+                    <th>
+                        <input type="checkbox" ng-model="offer.public" value="{{offer.public}}">
+
+                    </th>
+                    <th>
+                        <button class="btn btn-success" ng-click="UpdateOffers($index)">Обновить</button>
+                    </th>
+                    <th>
+                        <button class="btn btn-danger" ng-click="deleteOffer($index)">Удалить</button>
+                    </th>
+                </tr>
+
+                <tfoot>
+                    <tr>
+                        <th>
+                            <h4>Добавить новый</h4>
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            <img class="small-image" ng-src="{{newOffer.offer_url}}">
+                        </th>
+                        <th contenteditable="true" ng-model="newOffer.offer_url" strip-br="true" strip-tags="true" select-non-editable="true" placeholder="URL">
+                            Линк
+                        </th>
+                        <th contenteditable="true" ng-model="newOffer.title" strip-br="true" strip-tags="true" select-non-editable="true">
+
+                        </th>
+                        <th>
+                            <select class="form-control" ng-model="newOffer.client">
+                        <option ng-repeat="client in clients">{{client.name}}</option>
+                      </select>
+                        </th>
+                        <th contenteditable="true" ng-model="newOffer.description" strip-br="true" strip-tags="true" select-non-editable="true">
+
+
+                        </th>
+                        <th>
+
+                            <datepicker>
+                                <input ng-model="newOffer.expires" type="text" />
+                            </datepicker>
+
+                        </th>
+                        <th>
+                            <input type="checkbox" ng-model="newOffer.public" value="{{offer.public}}">
+
+                        </th>
+                        <th>
+                            <button class="btn btn-primary" ng-click="createOffer()">Создать</button>
+                        </th>
+                    </tr>
+                </tfoot>
+        </table>
+
+
+
+
+    </div>
+
+</div>
+<div class="row">
+    <button ng-click="loggout()">Loggout</button>
+</div>

@@ -1,91 +1,202 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
+    $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+    // bower:scss
+    @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+    // endbower
+    @import "_vars.scss";
+    * {
+         :focus {
+            outline: none;
+        }
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    
+    .table-url {
+        max-width: 200px;
+        word-break: break-all;
+    }
+    
+    .navigation {
+        background: $navigation;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        .logo {
+            img {
+                height: 50px;
+            }
+        }
+        .sub-nav {
+            padding-left: 30px;
+            a {
+                display: inline-block;
+                margin-left: 20px;
+                color: $inverted-main;
+                text-decoration: none;
+                 :hover {
+                    text-decoration: none;
+                    color: $yellow;
+                }
+                 :focus {
+                    text-decoration: none;
+                }
+                img {
+                    height: 30px;
+                    width: auto;
+                    display: inline-block;
+                    margin-bottom: 5px;
+                }
+                p {
+                    margin: 0;
+                    padding: 0;
+                    margin-left: 10px;
+                    padding-top: 14px;
+                    line-height: 1;
+                    display: inline-block;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+        }
+        .search-field {
+            input {
+                width: 100%;
+                margin-top: 2px;
+                height: 40px;
+                border-radius: 20px;
+                border: none;
+                padding-left: 20px;
+                padding-right: 20px;
+                 :focus {
+                    outline: none;
+                }
+                 :active {
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+        .profile {
+            a {
+                float: right;
+            }
+        }
+    }
+    
+    .bottom-nav {
+        background: $gray;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .categories {
+            padding-top: 8px;
+            a {
+                float: left;
+                font-size: 14px;
+                font-weight: bold;
+                color: $text-sub;
+                text-decoration: none;
+                 :hover {
+                    text-decoration: none;
+                    color: $text;
+                }
+                 :focus {
+                    text-decoration: none;
+                }
+                p {
+                    margin-right: 20px;
+                    line-height: 1;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .login {
+            a {
+                display: inline-block;
+                margin-left: 20px;
+                color: $text-sub;
+                text-decoration: none;
+                float: right;
+                 :hover {
+                    text-decoration: none;
+                    color: $text;
+                }
+                 :focus {
+                    text-decoration: none;
+                }
+                img {
+                    height: 20px;
+                    width: auto;
+                    display: inline-block;
+                    margin-bottom: 5px;
+                }
+                p {
+                    margin: 0;
+                    padding: 0;
+                    margin-left: 10px;
+                    padding-top: 10px;
+                    line-height: 1;
+                    display: inline-block;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    
+    .futured {
+        padding-top: 30px;
+        .media-wrap {
+            width: 50%;
+            display: inline-block;
+            float: left;
+        }
+        .futured-item {
+            img {
+                display: inline-block;
+                border-radius: 6px;
+                width: 100%;
+            }
+            .futured-descr {
+                width: 50%;
+                float: left;
+                display: inline-block;
+                padding-left: 10px;
+                h3 {
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                    font-size: 16px;
+                    font-weight: bold; 
+                }
+                p {
+                    margin: 0;
+                    color: $text-sub;
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                }
+                h4 {
+                    margin-top: 0;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: $success;
+                }
+            }
+        }
+    }
+.all-offers {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: $gray;
+    .single-offer {
+        img {
+            border-radius: 10px;
+        }
+    }
+    
 }
-
-body {
-  padding: 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+    background: $dark-gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }

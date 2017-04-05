@@ -8,10 +8,13 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('AboutCtrl', function ($scope, $stamplay) {
+
+    $stamplay.User.currentUser()
+            .then(function (res) {
+                // success
+
+                $scope.userName = res.user.displayName;
+                console.log($scope.userName);
+            });
   });

@@ -1,23 +1,64 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="container-fluid bottom-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ">
+                <div class="categories">
+                    <a href="/">
+                        <p>Разместить акцию</p>
+                    </a>
+                    <a href="/">
+                        <p>Сотрудничество</p>
+                    </a>
+                    <a href="/">
+                        <p>Блог</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 login">
+                <a href="/">
+                    <img src="/images/login.svg">
+                    <p>Войти</p>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="container futured">
+    <div class="row">
+        <div ng-repeat="n in [42, 42, 43, 43] track by $index" class="col-md-3">
+            <div class="futured-item">
+                <div class="media-wrap">
+                    <img src="http://placehold.it/162x100">
+                </div>
+                <div class="futured-descr">
+                    <h3>Куриные окорочка</h3>
+                    <p>Провиант</p>
+                    <h4>-20%</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Фильтр</h4>
+        </div>
+    </div>
+</div>
+<div class="container-fluid all-offers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="offer in offers" ng-show="offer.public" class="offer-single-item">
+                <div class="single-offer">
+                    <img class="img-responsive rounded" src="http://placehold.it/486x300">
+                    <h4 class="media-heading">{{offer.title}}</h4>
+                    <p>{{offer.description}}</p>
+                    <p>{{offer.client}}</p>
+                    <p>{{offer.expires | date:'dd.MM'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
