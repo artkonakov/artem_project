@@ -8,16 +8,16 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('AboutCtrl', ['$scope', '$stamplay', '$routeParams', function ($scope, $stamplay, $routeParams) {
+    .controller('ClientCtrl', ['$scope', '$stamplay', '$routeParams', function ($scope, $stamplay, $routeParams) {
         $scope.currentId = $routeParams.id;
         $scope.currentCompany = $routeParams.company;
         $stamplay.Object("offers").get({
-                '_id': $scope.currentId
+                'client_url': $scope.currentCompany
             })
             .then(function (res) {
                 // success
                 $scope.$apply(function () {
-                    $scope.offers = res.data[0];
+                    $scope.offers = res.data;
                 });
 
                 console.log($scope.offers);

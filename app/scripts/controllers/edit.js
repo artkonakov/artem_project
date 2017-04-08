@@ -8,7 +8,7 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('EditCtrl', ['$scope', '$stamplay', '$route', function ($scope, $stamplay, $route) {
+    .controller('EditCtrl', ['$scope', 'ModalService', '$stamplay', '$route', function ($scope, ModalService, $stamplay, $route) {
 
         $scope.newOffer;
 
@@ -78,13 +78,13 @@ angular.module('resdokWebApp')
         };
         $scope.getData();
         $scope.getClients();
-        
+
         $scope.createOffer = function () {
 
             Stamplay.Object("offers").save($scope.newOffer)
                 .then(function (res) {
                     // success
-                $scope.newOffer = {};
+                    $scope.newOffer = {};
                     $scope.getData();
                     console.log(res);
                 }, function (err) {
@@ -124,6 +124,18 @@ angular.module('resdokWebApp')
                     console.log(err);
                 });
 
+        };
+
+        $scope.show = function () {
+            ModalService.showModal({
+                templateUrl: 'views/modal.html',
+                controller: "MainCtrl"
+            }).then(function (modal) {
+                modal.element.modal();
+                modal.close.then(function (result) {
+                    $scope.message = "You said " + result;
+                });
+            });
         };
 
 

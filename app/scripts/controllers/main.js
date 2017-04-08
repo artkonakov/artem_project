@@ -8,30 +8,75 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('MainCtrl', ['$scope', '$stamplay', function ($scope, $stamplay) {
+    .controller('MainCtrl', ['$scope', '$stamplay', 'ModalService', function ($scope, $stamplay, ModalService) {
 
-
-      
+        $scope.close = function (result) {
+            close(result, 500); // close, but give 500ms for bootstrap to animate
+        };
 
         var query = {
             client: 'Провиант'
         };
+         
+        $scope.getObjects = function () {
+            $stamplay.Object("offers").get({})
+                .then(function (res) {
+                    // success
+                    $scope.$apply(function () {
+                        $scope.offers = res.data;
+                    });
 
-        $stamplay.Object("offers").get({})
-            .then(function (res) {
-                // success
-                $scope.$apply(function () {
-                    $scope.offers = res.data;
+                    console.log($scope.offers);
+
+                }, function (err) {
+                    // error
+                    console.log(err);
                 });
-               
-                console.log($scope.offers);
+        };
+        
+        $scope.sendLike = function (id) {
 
-            }, function (err) {
-                // error
-                console.log(err);
+            $stamplay.Object("offers").get({
+                    "_id": id
+                })
+                .then(function (res) {
+                    // success
+                    var likes = res.data[0].likes += 1;
+                    var data = {
+                        "likes": likes
+                    };
+                    $stamplay.Object("offers").patch(id, data)
+                        .then(function (res) {
+                            // success
+                            console.log(res)
+                            $scope.getObjects();
+                        }, function (err) {
+                            // error
+                            console.log(res)
+                        });
+
+
+
+                }, function (err) {
+                    // error
+                    console.log(err);
+                });
+
+
+        };
+
+        $scope.show = function () {
+            ModalService.showModal({
+                templateUrl: 'views/login.html',
+                controller: "LoginCtrl"
+            }).then(function (modal) {
+                modal.element.modal();
+                modal.close.then(function (result) {
+                    $scope.message = "You said " + result;
+                });
             });
-
-
+        };
+        $scope.getObjects();
         /* $stamplay.User.currentUser()
             .then(function (res) {
                 // success

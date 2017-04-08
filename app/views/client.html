@@ -1,9 +1,11 @@
 <div class="container about">
     <div class="row">
-        <div class="col-md-9 about-offer">
-            <img class="img-responsive" src="{{offers.offer_url}}">
-            <h3>{{offers.title}}</h3>
-            <p>{{offers.description}}</p>
+        <div class="col-md-9">
+            <div ng-repeat="offer in offers">
+                <img class="img-responsive" ng-src="{{offer.offer_url}}">
+                <h3>{{offer.title}}</h3>
+                <p>{{offer.description}}</p>
+            </div>
         </div>
         <div class="col-md-3 ">
             <div class="company">

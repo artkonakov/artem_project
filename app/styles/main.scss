@@ -1,10 +1,11 @@
     $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
     // bower:scss
     @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+    @import "slick-carousel/slick/slick.scss";
     // endbower
     @import "_vars.scss";
     * {
-         :focus {
+        &:focus {
             outline: none;
         }
     }
@@ -12,7 +13,6 @@
     body {
         font-family: 'Open Sans', sans-serif;
     }
-
     
     .table-url {
         max-width: 200px;
@@ -35,11 +35,11 @@
                 margin-left: 20px;
                 color: $inverted-main;
                 text-decoration: none;
-                 :hover {
+                &:hover {
                     text-decoration: none;
                     color: $yellow;
                 }
-                 :focus {
+                &:focus {
                     text-decoration: none;
                 }
                 img {
@@ -69,10 +69,10 @@
                 border: none;
                 padding-left: 20px;
                 padding-right: 20px;
-                 :focus {
+                &:focus {
                     outline: none;
                 }
-                 :active {
+                &:active {
                     border: none;
                     outline: none;
                 }
@@ -97,11 +97,11 @@
                 font-weight: bold;
                 color: $text-sub;
                 text-decoration: none;
-                 :hover {
+                &:hover {
                     text-decoration: none;
                     color: $text;
                 }
-                 :focus {
+                &:focus {
                     text-decoration: none;
                 }
                 p {
@@ -118,11 +118,11 @@
                 color: $text-sub;
                 text-decoration: none;
                 float: right;
-                 :hover {
+                &:hover {
                     text-decoration: none;
                     color: $text;
                 }
-                 :focus {
+                &:focus {
                     text-decoration: none;
                 }
                 img {
@@ -147,6 +147,12 @@
     
     .futured {
         padding-top: 30px;
+        .swiper-slide {
+            width: 300px;
+        }
+        .wraper-slick-item {
+            width: 300px;
+        }
         .media-wrap {
             width: 50%;
             display: inline-block;
@@ -167,7 +173,7 @@
                     margin-top: 0;
                     margin-bottom: 5px;
                     font-size: 16px;
-                    font-weight: bold; 
+                    font-weight: bold;
                 }
                 p {
                     margin: 0;
@@ -184,19 +190,258 @@
             }
         }
     }
-.all-offers {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background: $gray;
-    .single-offer {
-        img {
-            border-radius: 10px;
+    
+    .main-page-promos {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .main-page-promo {
+            position: relative;
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                filter: brightness(40%);
+                &:hover {
+                    filter: brightness(100%);
+                }
+            }
+            .promo-descr {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                padding: 100px 30px 30px 30px;
+                h1 {
+                    vertical-align: middle;
+                    color: $inverted-main;
+                    margin-bottom: 30px;
+                    font-weight: bold;
+                    line-height: 1.2;
+                    letter-spacing: 1px;
+                    font-size: 34px;
+                    a {
+                        text-decoration: none;
+                        padding: 0;
+                        margin: 0;
+                        background: none;
+                        color: $inverted-main;
+                    }
+                }
+                .promo-btn {
+                    padding: 10px 25px;
+                    background: $yellow;
+                    border-radius: 20px;
+                    color: $text;
+                    font-size: 12px;
+                    letter-spacing: 1px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    &:hover {
+                        background: $yellow-sub;
+                        text-decoration: none;
+                    }
+                    &:focus {
+                        text-decoration: none;
+                    }
+                }
+            }
+            .offer-price {
+                position: absolute;
+                top: 20px;
+                right: 0px;
+                padding: 15px 20px;
+                background: $success;
+                border-radius: 10px 0px 0px 10px;
+                p {
+                    padding: 0;
+                    margin: 0;
+                    line-height: 1;
+                    color: $inverted-main;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
         }
     }
     
-}
-.footer {
-    background: $dark-gray;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    .all-offers {
+        padding-top: 50px;
+        padding-bottom: 30px;
+        background: $gray;
+        .offer-single-item {
+            margin-bottom: 40px;
+        }
+        .single-offer {
+            img {
+                border-radius: 10px;
+                position: relative;
+            }
+            .offer-price {
+                position: absolute;
+                top: 20px;
+                right: 15px;
+                padding: 15px 20px;
+                background: $success;
+                border-radius: 10px 0px 0px 10px;
+                p {
+                    padding: 0;
+                    margin: 0;
+                    line-height: 1;
+                    color: $inverted-main;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
+            .offer-top {
+                position: absolute;
+                top: -15px;
+                left: 25px;
+                padding: 8px 12px;
+                background: $pink;
+                border-radius: 10px;
+                img {
+                    width: 14px;
+                }
+            }
+            .offer-type {
+                margin-top: 15px;
+                a {
+                    text-decoration: none;
+                    font-weight: bold;
+                    color: $text-sub;
+                    margin-right: 15px;
+                    &:hover {
+                        color: $dark-gray;
+                    }
+                }
+            }
+            .offer-descr {
+                .offer-title {
+                    height: 40px;
+                    h4 {
+                        font-weight: bold;
+                        line-height: 1.2;
+                    }
+                    a {
+                        color: $text;
+                        text-decoration: none;
+                        &:hover {
+                            color: $pink;
+                            text-decoration: none;
+                        }
+                    }
+                }
+                table {
+                    width: 100%;
+                    .client-name {
+                        vertical-align: middle;
+                        height: 40px;
+                        a {
+                            margin: 0;
+                            padding: 0;
+                            font-weight: bold;
+                            color: $text;
+                            &:hover {
+                                text-decoration: none;
+                                color: $pink;
+                            }
+                        }
+                    }
+                    .expires {
+                        height: 40px;
+                        text-align: right;
+                        p {
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+                    .likes {
+                        vertical-align: middle;
+                        img {
+                            height: 24px;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .about-btn {
+                        text-align: right;
+                        a {
+                            padding: 10px 25px;
+                            background: $pink;
+                            border-radius: 20px;
+                            color: $inverted-main;
+                            font-size: 12px;
+                            letter-spacing: 1px;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            &:hover {
+                                background: $pink-sub;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .footer {
+        background: $dark-gray;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        h3 {
+            color: $inverted-main;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        p {
+            color: $inverted-main;
+        }
+        .footer-about {
+            p {
+                color: $inverted-main;
+            }
+        }
+        .footer-copyright {
+            p {
+                text-align: right;
+            }
+        }
+    }
+    
+    .about {
+        padding-top: 50px;
+        padding-bottom: 30px;
+        .about-offer {
+            h3 {
+                 font-weight: bold;
+            }
+            img {
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+        .company {
+            
+            background: $company-bg;
+            border-radius: 10px;
+            img {
+                border-radius: 10px 10px 0px 0px;
+            }
+            .company-descr {
+                padding: 15px 30px;
+                h4 {
+                text-align: left;
+                font-weight: bold;
+            }
+            }
+            
+        }
+    }
+.edit {
+    .small-image {
+        width: 120px;
+    }
 }
