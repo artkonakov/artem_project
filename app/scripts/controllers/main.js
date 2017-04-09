@@ -8,16 +8,14 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('MainCtrl', ['$scope', '$stamplay', 'ModalService', function ($scope, $stamplay, ModalService) {
+    .controller('MainCtrl', ['$scope', '$stamplay', 'ModalService', 'moment', function ($scope, $stamplay, ModalService, moment) {
 
         $scope.close = function (result) {
             close(result, 500); // close, but give 500ms for bootstrap to animate
         };
 
-        var query = {
-            client: 'Провиант'
-        };
-         
+
+
         $scope.getObjects = function () {
             $stamplay.Object("offers").get({})
                 .then(function (res) {
@@ -33,9 +31,8 @@ angular.module('resdokWebApp')
                     console.log(err);
                 });
         };
-        
-        $scope.sendLike = function (id) {
 
+        $scope.sendLike = function (id) {
             $stamplay.Object("offers").get({
                     "_id": id
                 })
@@ -54,15 +51,10 @@ angular.module('resdokWebApp')
                             // error
                             console.log(res)
                         });
-
-
-
                 }, function (err) {
                     // error
                     console.log(err);
                 });
-
-
         };
 
         $scope.show = function () {
@@ -76,7 +68,20 @@ angular.module('resdokWebApp')
                 });
             });
         };
+
         $scope.getObjects();
+
+        $scope.today = moment();
+        
+        $scope.checkDate = function(date) {
+            var today = moment();
+            return moment(today).isBefore(date)
+            
+            
+        }
+        
+
+
         /* $stamplay.User.currentUser()
             .then(function (res) {
                 // success

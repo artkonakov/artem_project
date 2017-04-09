@@ -34,7 +34,7 @@ angular
                 controller: 'MainCtrl',
                 controllerAs: 'main'
             })
-            .when('/:company/:id', {
+            .when('/akcii/:company/:id', {
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl',
                 controllerAs: 'about'
@@ -49,10 +49,15 @@ angular
                 controller: 'EditCtrl',
                 controllerAs: 'edit'
             })
-            .when('/:company', {
+            .when('/akcii/:company', {
                 templateUrl: 'views/client.html',
                 controller: 'ClientCtrl',
                 controllerAs: 'client'
+            })
+            .when('/edit/:id', {
+                templateUrl: 'views/editclient.html',
+                controller: 'editClientCtrl',
+                controllerAs: 'editclient'
             })
             .otherwise({
                 redirectTo: '/'

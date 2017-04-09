@@ -1,0 +1,71 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#!/">Главная</a></li>
+                <li><a href="#!/edit">Акции</a></li>
+                <li class="active">Редактирование акции</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 client-form">
+            <img class="client-img" src="{{offers[0].offer_url}}">
+            <label class="control-label">Ссылка на изображение</label>
+            <div class="input-group">
+
+                <span class="input-group-addon" id="basic-addon3">http://resdok.ru</span>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="offers[0].offer_url">
+            </div>
+            <label class="control-label expires">Заголовок</label>
+            <textarea ng-model="offers[0].title" class="form-control" rows="3"></textarea>
+            <label class="control-label expires">Описание</label>
+            <textarea ng-model="offers[0].description" class="form-control" rows="4"></textarea>
+
+        </div>
+        <div class="col-md-4 client-form">
+
+            <label class="control-label ">Размер скидки</label>
+            <input type="text" class="form-control" ng-model="offers[0].discount">
+            <label class="control-label expires">Промокод (если есть)</label>
+            <input type="text" class="form-control" ng-model="offers[0].promocode">
+            <label class="control-label expires">Штрихкод (если есть)</label>
+            <input type="text" class="form-control" ng-model="offers[0].barcode">
+            <label class="control-label expires">Действует до</label>
+            <input class="form-control" ng-model="offers[0].expires" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{offers[0].expires | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">
+            <label class="control-label expires">Опубликовать</label>
+            <input class="form-control" ng-model="offers[0].startdate" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{offers[0].startdate | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">
+        </div>
+        <div class="col-md-4 client-form">
+            <label class="control-label">Клиент</label>
+            <select class="form-control" ng-model="offers[0].client" ng-options="client.client.name for client in clients track by client.client.name">
+            </select>
+            
+            <label class="control-label expires">Категория</label>
+            <select class="form-control" ng-model="offers[0].category" ng-options="category.category.title for category in categories track by category.category.title">
+            </select>
+            
+            <label class="control-label expires">Тип</label>
+            <select class="form-control" ng-model="offers[0].type" ng-options="type.type.title for type in types track by type.type.title">
+           </select>
+
+            <label class="col-md-6 expires">
+                <input type="checkbox" ng-model="offers[0].public" value="{{offers[0].public}}"> Показывать
+      
+            </label>
+            <label class="col-md-6 expires">
+                <input type="checkbox" ng-model="offers[0].showinpromo" value="{{offers[0].showinpromo}}"> Вывести в промо
+      
+            </label>
+            <a class="btn btn-success expires pull-right" ng-click="UpdateOffers($index)">Обновить</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 client-form">
+
+        </div>
+        <div class="col-md-8 client-form">
+
+        </div>
+    </div>
+</div>

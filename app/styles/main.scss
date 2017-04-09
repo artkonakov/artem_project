@@ -416,7 +416,7 @@
         padding-bottom: 30px;
         .about-offer {
             h3 {
-                 font-weight: bold;
+                font-weight: bold;
             }
             img {
                 width: 100%;
@@ -424,7 +424,6 @@
             }
         }
         .company {
-            
             background: $company-bg;
             border-radius: 10px;
             img {
@@ -433,15 +432,32 @@
             .company-descr {
                 padding: 15px 30px;
                 h4 {
-                text-align: left;
-                font-weight: bold;
+                    text-align: left;
+                    font-weight: bold;
+                }
             }
-            }
-            
         }
     }
-.edit {
-    .small-image {
-        width: 120px;
+    
+    .edit {
+        .small-image {
+            width: 120px;
+        }
     }
-}
+    
+    .editclient {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .client-img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+        .expires {
+            margin-top: 15px;
+        }
+        .client-form {
+            margin-bottom: 30px;
+        }
+    }
