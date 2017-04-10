@@ -36,7 +36,6 @@ module.exports = function(config) {
       'bower_components/stamplay-js-sdk/dist/stamplay.js',
       'bower_components/angular-contenteditable/angular-contenteditable.js',
       'bower_components/angucomplete-alt/angucomplete-alt.js',
-      'bower_components/angularjs-datepicker/dist/angular-datepicker.js',
       'bower_components/slick-carousel/slick/slick.js',
       'bower_components/angular-slick-carousel/dist/angular-slick.js',
       'bower_components/swiper/dist/js/swiper.js',

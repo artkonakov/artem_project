@@ -1,0 +1,89 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#!/">Главная</a></li>
+                <li><a href="#!/edit">Акции</a></li>
+                <li class="active">Редактирование акции</li>
+            </ol>
+        </div>
+    </div>
+    <h1>{{newClient}}</h1>
+    <div class="row">
+        <div class="col-md-4 client-form">
+            <img class="client-img" src="{{newClient.img}}">
+            <label class="control-label">Ссылка на изображение (972x600px)</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">http://resdok.ru</span>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="newClient.img">
+            </div>
+
+            <label class="control-label expires">Название</label>
+            <input type="text" class="form-control" ng-model="newClient.client.name">
+
+            <label class="control-label expires">Название английскими буквами</label>
+            <input type="text" class="form-control" ng-model="newClient.client.url">
+
+            <label class="control-label expires">Описание</label>
+            <textarea ng-model="newClient.description" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="col-md-4 client-form">
+            <label class="control-label ">Ссылка на сайт (если есть)</label>
+            <input type="text" class="form-control" ng-model="newClient.websiteUrl">
+            <label class="control-label expires">Ссылка вконтакте (если есть)</label>
+            <input type="text" class="form-control" ng-model="newClient.vkUrl">
+            <label class="control-label expires">Ссылка одноклассники (если есть)</label>
+            <input type="text" class="form-control" ng-model="newClient.okUrl">
+            <label class="control-label expires">Ссылка фейсбук (если есть)</label>
+            <input type="text" class="form-control" ng-model="newClient.fbUrl">
+            <label class="control-label expires">Почта (если есть)</label>
+            <input type="text" class="form-control" ng-model="newClient.email">
+            <label class="control-label expires">Номер телефона (если есть)</label>
+            <input type="tel" class="form-control" ng-model="newClient.phones[0]">
+            <label class="control-label expires">Номер телефона дополнительный (если есть)</label>
+            <input type="tel" class="form-control" ng-model="newClient.phones[1]">
+
+
+        </div>
+        <div class="col-md-4 client-form">
+
+            <a class="btn btn-success expires pull-right" ng-click="createNewClient()">Создать</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h4>Адреса магазинов</h4>
+
+        </div>
+        <div class="col-md-4">
+            <form class="form-inline pull-right">
+                <div class="form-group">
+                    <label class="control-label">Количество адресов</label>
+                    <input type="number" class="form-control" ng-model="helperAdress">
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2 client-form" ng-repeat="i in getNumber(helperAdress) track by $index">
+            
+            <label class="control-label">Адрес {{$index+1}}</label>
+            <input type="text" class="form-control" ng-model="newClient.location[$index].adress">
+            <label class="control-label expires">Название</label>
+            <input type="text" class="form-control" ng-model="newClient.location[$index].name">
+            <label class="control-label expires">Режим работы</label>
+            <textarea class="form-control" ng-model="newClient.location[$index].schedule" rows="3"></textarea>
+            <label class="control-label expires">Телефон</label>
+            <input type="tel" class="form-control" ng-model="newClient.location[$index].phone">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 client-form">
+
+        </div>
+    </div>
+</div>

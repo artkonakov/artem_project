@@ -73,9 +73,9 @@ angular.module('resdokWebApp')
 
         $scope.today = moment();
         
-        $scope.checkDate = function(date) {
+        $scope.checkDate = function(start, end) {
             var today = moment();
-            return moment(today).isBefore(date)
+            return moment(today).isBetween(start, end);
             
             
         }

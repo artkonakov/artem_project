@@ -1,50 +1,57 @@
 {
-    "name": "resdok-web",
-    "version": "0.0.0",
-    "dependencies": {
-        "angular": "^1.4.0",
-        "bootstrap-sass-official": "^3.2.0",
-        "angular-animate": "^1.4.0",
-        "angular-cookies": "^1.4.0",
-        "angular-resource": "^1.4.0",
-        "angular-route": "^1.4.0",
-        "angular-sanitize": "^1.4.0",
-        "angular-touch": "^1.4.0",
-        "angular-stamplay": "^0.0.3",
-        "stamplay-js-sdk": "^2.1.4",
-        "angular-contenteditable": "^0.3.8",
-        "angucomplete-alt": "^3.0.0",
-        "angularjs-datepicker": "^2.1.17",
-        "slick-carousel": "^1.6.0",
-        "angular-slick-carousel": "^3.1.7",
-        "angular-swiper": "^0.4.0",
-        "angular-loading-bar": "^0.9.0",
-        "angular-moment-picker": "moment-picker#^0.9.10",
-        "angular-moment": "^1.0.1",
-        "angular-i18n": "^1.6.4",
-        "angular-modal-service": "0.10.1"
-    },
-    "resolutions": {
-        "angular": "~1.5.x"
-    },
-    "devDependencies": {
-        "angular-mocks": "^1.4.0"
-    },
-    "appPath": "app",
-    "moduleName": "resdokWebApp",
-    "overrides": {
-        "bootstrap": {
-            "main": [
+  "name": "resdok-web",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "bootstrap-sass-official": "^3.2.0",
+    "angular-animate": "^1.6.0",
+    "angular-cookies": "^1.6.0",
+    "angular-resource": "^1.6.0",
+    "angular-route": "^1.6.0",
+    "angular-sanitize": "^1.6.0",
+    "angular-touch": "^1.6.0",
+    "angular-stamplay": "^0.0.3",
+    "stamplay-js-sdk": "^2.1.4",
+    "angular-contenteditable": "^0.3.8",
+    "angucomplete-alt": "^3.0.0",
+    "slick-carousel": "^1.6.0",
+    "angular-slick-carousel": "^3.1.7",
+    "angular-swiper": "^0.4.0",
+    "angular-loading-bar": "^0.9.0",
+    "angular-moment": "^1.0.1",
+    "angular-moment-picker": "moment-picker#^0.9.10",
+    "angular-i18n": "^1.6.4",
+    "angular-modal-service": "0.10.1",
+    "angular-ui-notification": "^0.3.6"
+    
+  },
+  "resolutions": {
+    "angular": "~1.6.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.0"
+  },
+  "appPath": "app",
+  "moduleName": "resdokWebApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
         "less/bootstrap.less",
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
-        },
-        "moment": {
-            "main": [
+    },
+    "moment": {
+      "main": [
         "min/moment.min.js",
         "locale/ru.js"
       ]
-        }
+    },
+    "angular-moment-picker": {
+      "main": [
+        "dist/angular-moment-picker.js",
+        "dist/angular-moment-picker.css"
+      ]
     }
+  }
 }

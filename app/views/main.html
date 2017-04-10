@@ -101,28 +101,28 @@
 <div class="container-fluid all-offers">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 offer-single-item" ng-repeat="offer in offers | orderBy: 'likes' : -1" ng-show="offer.public && checkDate(offer.expires)">
+            <div class="col-md-4 offer-single-item" ng-repeat="offer in offers" ng-show="offer.public && checkDate(offer.startdate, offer.expires)">
                 <div class="single-offer">
-                    <a href="/"><img class="img-responsive rounded" ng-src="{{offer.offer_url}}"></a>
+                    <a href="#!/akcii/{{offer.client.client.url}}/{{offer._id}}"><img class="offer-img" ng-src="{{offer.offer_url}}"></a>
                     <div class="offer-price">
                         <p>{{offer.discount}}</p>
                     </div>
-                    <div class="offer-top">
-                        <img src="/images/flame.svg">
+                    <div ng-if="offer.likes > 5" class="offer-top">
+                        <img  src="/images/flame.svg">
                     </div>
                     <div class="offer-type" >
-                        <a href="/">Купоны</a>
-                        <a href="/">Еда</a>
+                        <a href="#!/{{offer.type.type.url}}">{{offer.type.type.title}}</a>
+                        <a href="#!/{{offer.category.category.url}}">{{offer.category.category.title}}</a>
                     </div>
                     <div class="offer-descr">
                         <div class="offer-title">
-                            <h4><a href="#!/akcii/{{offer.client_url}}/{{offer._id}}">{{offer.title}}</a></h4>
+                            <h4><a href="#!/akcii/{{offer.client.client.url}}/{{offer._id}}">{{offer.title | limitTo: 84 }}{{offer.title.length > 84 ? '...' : ''}}</a></h4>
                         </div>
                         <table>
                             <tbody>
                                 <tr>
                                     <td class="client-name">
-                                        <a href="#!/{{offer.client.client.url}}">{{offer.client.client.name}}</a>
+                                        <a href="#!/akcii/{{offer.client.client.url}}">{{offer.client.client.name}}</a>
                                     </td>
                                     <td class="expires">
                                         <p>до {{offer.expires | amDateFormat:'DD MMMM HH:mm'}} </p>
@@ -130,7 +130,7 @@
                                 </tr>
                                 <tr>
                                     <td class="likes"><img ng-click="sendLike(offer.id)" src="/images/heart-inv.svg">  {{offer.likes}} </td>
-                                    <td class="about-btn"><a href="#!/akcii/{{offer.client_url}}/{{offer._id}}">Подробнее</a></td>
+                                    <td class="about-btn"><a href="#!/akcii/{{offer.client.client.url}}/{{offer._id}}">Подробнее</a></td>
                                 </tr>
                             </tbody>
                         </table>

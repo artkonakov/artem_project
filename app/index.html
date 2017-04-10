@@ -16,11 +16,11 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css" />
-    <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.css" />
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css" />
     <link rel="stylesheet" href="bower_components/swiper/dist/css/swiper.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
-    <link rel="stylesheet" href="bower_components/angular-moment-picker/dist/angular-moment-picker.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-moment-picker/dist/angular-moment-picker.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -123,7 +123,6 @@
     <script src="bower_components/stamplay-js-sdk/dist/stamplay.js"></script>
     <script src="bower_components/angular-contenteditable/angular-contenteditable.js"></script>
     <script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
-    <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
     <script src="bower_components/slick-carousel/slick/slick.js"></script>
     <script src="bower_components/angular-slick-carousel/dist/angular-slick.js"></script>
     <script src="bower_components/swiper/dist/js/swiper.js"></script>
@@ -131,9 +130,10 @@
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <script src="bower_components/moment/min/moment.min.js"></script>
     <script src="bower_components/moment/locale/ru.js"></script>
-    <script src="bower_components/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/angular-moment-picker/dist/angular-moment-picker.js"></script>
     <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -145,7 +145,11 @@
     <script src="scripts/controllers/edit.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/client.js"></script>
+    <script src="scripts/controllers/editOffer.js"></script>
+    <script src="scripts/controllers/createOffer.js"></script>
     <script src="scripts/controllers/editClient.js"></script>
+    <script src="scripts/controllers/createClient.js"></script>
+    <script src="scripts/controllers/settings.js"></script>
     <script src="scripts/directives/single-item.js"></script>
     <script src="scripts/services/factory.js"></script>
     <!-- endbuild -->
@@ -154,8 +158,29 @@
         Stamplay.init('resdok');
 
     </script>
-    
-   
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(["init", {
+            appId: "e38a1b51-8ab8-46c8-aa56-2d3180beaa44",
+            autoRegister: true,
+            /* Set to true to automatically prompt visitors */
+            subdomainName: 'resdok',
+            /*
+            subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
+            */
+            httpPermissionRequest: {
+                enable: true
+            },
+            notifyButton: {
+                enable: false /* Set to false to hide */
+            }
+        }]);
+
+    </script>
+
+
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?144"></script>
 
     <!-- VK Widget -->
@@ -166,7 +191,8 @@
         });
 
     </script>
-     
+
+
 </body>
 
 </html>

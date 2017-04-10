@@ -1,0 +1,78 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#!/">Главная</a></li>
+                <li><a href="#!/edit">Акции</a></li>
+                <li class="active">Редактирование акции</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 client-form">
+            <img class="client-img" src="{{newOffer.offer_url}}">
+            <label class="control-label">Ссылка на изображение</label>
+            <div class="input-group">
+
+                <span class="input-group-addon" id="basic-addon3">http://resdok.ru</span>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="newOffer.offer_url">
+            </div>
+            <label class="control-label expires">Заголовок</label>
+            <textarea ng-model="newOffer.title" class="form-control" rows="3"></textarea>
+            <label class="control-label expires">Описание</label>
+            <textarea ng-model="newOffer.description" class="form-control" rows="4"></textarea>
+
+        </div>
+        <div class="col-md-4 client-form">
+
+            <label class="control-label ">Размер скидки</label>
+            <input type="text" class="form-control" ng-model="newOffer.discount">
+            <label class="control-label expires">Промокод (если есть)</label>
+            <input type="text" class="form-control" ng-model="newOffer.promocode">
+            <label class="control-label expires">Штрихкод (если есть)</label>
+            <input type="text" class="form-control" ng-model="newOffer.barcode">
+            <label class="control-label expires">Внешняя ссылка (если есть)</label>
+            <input type="text" class="form-control" ng-model="newOffer.outer_link">
+            <label class="control-label expires">Действует до</label>
+            <input class="form-control" ng-model="newOffer.expires" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{newOffer.expires | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">
+            <label class="control-label expires">Опубликовать</label>
+            <input class="form-control" ng-model="newOffer.startdate" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{newOffer.startdate | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input2">
+        </div>
+        <div class="col-md-4 client-form">
+            <label class="control-label">Клиент</label>
+            <select class="form-control" ng-model="newOffer.client" ng-options="client.client.name for client in clients track by client.client.name">
+            </select>
+
+            <label class="control-label expires">Категория</label>
+            <select class="form-control" ng-model="newOffer.category" ng-options="category.category.title for category in categories track by category.category.title">
+            </select>
+
+            <label class="control-label expires">Тип</label>
+            <select class="form-control" ng-model="newOffer.type" ng-options="type.type.title for type in types track by type.type.title">
+           </select>
+
+            <label class="col-md-6 expires">
+                <input type="checkbox" ng-model="newOffer.public" value="{{newOffer.public}}"> Показывать
+      
+            </label>
+            <label class="col-md-6 expires">
+                <input type="checkbox" ng-model="newOffer.showinpromo" value="{{newOffer.showinpromo}}"> Вывести в промо
+                </label>
+            <label class="col-md-12 expires">
+                <input type="checkbox" ng-model="newOffer.partner" value="{{newOffer.partner}}"> Партнерский
+            
+            </label>
+            <div class="col-md-12">
+                <a class="btn btn-success expires pull-right" ng-click="createNewOffer()">Создать</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 client-form">
+
+        </div>
+        <div class="col-md-8 client-form">
+
+        </div>
+    </div>
+</div>

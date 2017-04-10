@@ -19,15 +19,15 @@ angular
     'ngStamplay',
     'contenteditable',
     'angucomplete-alt',
-    '720kb.datepicker',
     'slickCarousel',
     'ksSwiper',
     'angular-loading-bar',
     'angularMoment',
     'moment-picker',
-    'angularModalService'
+    'angularModalService',
+    'ui-notification'
   ])
-    .config(function ($routeProvider, cfpLoadingBarProvider) {
+    .config(function ($routeProvider, cfpLoadingBarProvider, NotificationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
@@ -54,17 +54,41 @@ angular
                 controller: 'ClientCtrl',
                 controllerAs: 'client'
             })
-            .when('/edit/:id', {
+            .when('/edit-offer/:id', {
+                templateUrl: 'views/editoffer.html',
+                controller: 'editOfferCtrl',
+                controllerAs: 'editOffer'
+            })
+            .when('/edit-client/:id', {
                 templateUrl: 'views/editclient.html',
                 controller: 'editClientCtrl',
-                controllerAs: 'editclient'
+                controllerAs: 'editClient'
+            })
+            .when('/create-client', {
+                templateUrl: 'views/createclient.html',
+                controller: 'createClientCtrl',
+                controllerAs: 'createClient'
+            })
+            .when('/create-offer', {
+                templateUrl: 'views/createoffer.html',
+                controller: 'createOfferCtrl',
+                controllerAs: 'createOffer'
             })
             .otherwise({
                 redirectTo: '/'
             });
         cfpLoadingBarProvider.includeBar = true;
         cfpLoadingBarProvider.includeSpinner = true;
+        NotificationProvider.setOptions({
+            delay: 2000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 5,
+            horizontalSpacing: 5,
+            positionX: 'left',
+            positionY: 'bottom'
+        });
     })
     .run(['$rootScope', 'amMoment', function ($rootScope, amMoment) {
         amMoment.changeLocale('ru');
-    }])
+    }]);
