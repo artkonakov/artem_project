@@ -10,13 +10,21 @@
     </div>
     <div class="row">
         <div class="col-md-4 client-form">
-            <img class="client-img" src="{{offers[0].offer_url}}">
-            <label class="control-label">Ссылка на изображение</label>
-            <div class="input-group">
+          <img ngf-size="{width: 486, height: 300, quality: 0.9}" class="client-img" ngf-thumbnail="file || offers[0].offer_url">
+            <form ng-app="fileUpload" name="form">
 
-                <span class="input-group-addon" id="basic-addon3">http://resdok.ru</span>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="offers[0].offer_url">
-            </div>
+                <div class="btn btn-default" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="600" ngf-resize="{width: 972, height: 600, centerCrop: true, type: 'image/jpeg', quality: .8}">Выбрать картинку</div>
+
+                <button class="btn btn-success" type="submit" ng-click="submit()">Загрузить</button>
+
+                <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                    <span class="progress" ng-show="f.progress >= 0">
+          <div style="width:{{f.progress}}%"  
+               ng-bind="f.progress + '%'"></div>
+      </span>
+                </div>
+                {{errorMsg}}
+            </form>
             <label class="control-label expires">Заголовок</label>
             <textarea ng-model="offers[0].title" class="form-control" rows="3"></textarea>
             <label class="control-label expires">Описание</label>
@@ -63,7 +71,8 @@
                 <input type="checkbox" ng-model="offers[0].partner" value="{{offers[0].partner}}"> Партнерский
             </label>
             <div class="col-md-12">
-                <a class="btn btn-success expires pull-right" ng-click="UpdateOffers($index)">Обновить</a>
+                <a class="btn btn-danger expires" ng-click="deleteOffer()">Удалить</a>
+                <a class="btn btn-success expires" ng-click="UpdateOffers()">Обновить</a>
             </div>
         </div>
     </div>

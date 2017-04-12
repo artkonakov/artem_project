@@ -1,0 +1,109 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#!/">Главная</a></li>
+                <li><a href="#!/edit">Акции</a></li>
+                <li class="active">Редактирование акции</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 client-form">
+            <img ngf-size="{width: 486, height: 300, quality: 0.9}" class="client-img" ngf-thumbnail="file || clients[0].img">
+            <form ng-app="fileUpload" name="form">
+
+                <div class="btn btn-default" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="600" ngf-resize="{width: 972, height: 600, centerCrop: true, type: 'image/jpeg', quality: .8}">Выбрать картинку</div>
+
+                <button class="btn btn-success" type="submit" ng-click="submit()">Загрузить</button>
+
+                <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                    <span class="progress" ng-show="f.progress >= 0">
+          <div style="width:{{f.progress}}%"  
+               ng-bind="f.progress + '%'"></div>
+      </span>
+                </div>
+                {{errorMsg}}
+            </form>
+
+            <label class="control-label expires">Название</label>
+            <input type="text" class="form-control" ng-model="clients[0].client.name">
+
+            <label class="control-label expires">Название английскими буквами</label>
+            <input type="text" class="form-control" ng-model="clients[0].client.url">
+
+
+        </div>
+
+        <div class="col-md-4 client-form">
+            <label class="control-label">Подпись</label>
+            <input type="text" class="form-control" ng-model="clients[0].client.shortdescrpition">
+
+            <label class="control-label expires">Описание</label>
+            <textarea ng-model="clients[0].description" class="form-control" rows="4"></textarea>
+
+            <label class="control-label expires">Номер телефона (если есть)</label>
+            <input type="tel" class="form-control" ng-model="clients[0].phones[0]">
+
+            <label class="control-label expires">Номер телефона дополнительный (если есть)</label>
+            <input type="tel" class="form-control" ng-model="clients[0].phones[1]">
+
+        </div>
+        <div class="col-md-4 client-form">
+
+            <label class="control-label ">Ссылка на сайт (если есть)</label>
+            <input type="text" class="form-control" ng-model="clients[0].websiteUrl">
+            <label class="control-label expires">Ссылка вконтакте (если есть)</label>
+            <input type="text" class="form-control" ng-model="clients[0].vkUrl">
+            <label class="control-label expires">Ссылка одноклассники (если есть)</label>
+            <input type="text" class="form-control" ng-model="clients[0].okUrl">
+            <label class="control-label expires">Ссылка фейсбук (если есть)</label>
+            <input type="text" class="form-control" ng-model="clients[0].fbUrl">
+            <label class="control-label expires">Почта (если есть)</label>
+            <input type="text" class="form-control" ng-model="clients[0].email">
+
+            <p class="del-btn"><a class="btn btn-danger expires" ng-click="deleteClients()">Удалить клиента</a>
+
+                <a class="btn btn-success expires" ng-click="updateClients()">Обновить</a>
+            </p>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h4>Адреса магазинов</h4>
+
+        </div>
+        <div class="col-md-4">
+            <form class="form-inline pull-right">
+                <div class="form-group">
+                    <label class="control-label">Количество адресов</label>
+                    <input type="number" min="0" max="7" class="form-control" ng-model="helperAdress">
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2 client-form" ng-repeat="i in getNumber(helperAdress) track by $index">
+
+            <label class="control-label">Адрес {{$index+1}}</label>
+            <input type="text" class="form-control" ng-model="clients[0].location[$index].adress">
+            <label class="control-label expires">Название</label>
+            <input type="text" class="form-control" ng-model="clients[0].location[$index].name">
+            <label class="control-label expires">Режим работы</label>
+            <textarea class="form-control" ng-model="clients[0].location[$index].schedule" rows="3"></textarea>
+            <label class="control-label expires">Телефон</label>
+            <input type="tel" class="form-control" ng-model="clients[0].location[$index].phone">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 client-form">
+
+        </div>
+    </div>
+</div>

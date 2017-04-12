@@ -25,7 +25,8 @@ angular
     'angularMoment',
     'moment-picker',
     'angularModalService',
-    'ui-notification'
+    'ui-notification',
+    'ngFileUpload'
   ])
     .config(function ($routeProvider, cfpLoadingBarProvider, NotificationProvider) {
         $routeProvider
@@ -59,8 +60,13 @@ angular
                 controller: 'editOfferCtrl',
                 controllerAs: 'editOffer'
             })
-            .when('/edit-client/:id', {
+            .when('/edit-clients/:id', {
                 templateUrl: 'views/editclient.html',
+                controller: 'editClientCtrl',
+                controllerAs: 'editClient'
+            })
+            .when('/edit-clients', {
+                templateUrl: 'views/editclients.html',
                 controller: 'editClientCtrl',
                 controllerAs: 'editClient'
             })

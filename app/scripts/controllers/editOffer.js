@@ -8,7 +8,7 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('editOfferCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification) {
+    .controller('editOfferCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', 'Upload', '$location', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification, Upload, $location) {
 
         $scope.userName = "Гость";
 
@@ -105,14 +105,13 @@ angular.module('resdokWebApp')
                 });
         };
 
-        $scope.deleteOffer = function ($index) {
-            var deletedObId = $scope.offers[$index]._id;
-            console.log(deletedObId);
-            $stamplay.Object("offers").remove(deletedObId)
+        $scope.deleteOffer = function () {
+                       
+            $stamplay.Object("offers").remove($scope.offers[0].id)
                 .then(function (res) {
                     // success
-                    $scope.getData();
-                    console.log(res);
+                    $location.path('/edit');
+                   
                 }, function (err) {
                     // error
                     console.log(err);
@@ -147,6 +146,43 @@ angular.module('resdokWebApp')
                 });
         };
 
+        // upload later on form submit or something similar
+        $scope.submit = function () {
+            if ($scope.form.file.$valid && $scope.file) {
+                $scope.upload($scope.file);
+            }
+        };
+
+
+        // upload on file select or drop
+        $scope.upload = function (file) {
+            $scope.username = 'user';
+            Upload.upload({
+                url: 'upload.php',
+                data: {
+                    file: file,
+                    'username': $scope.username,
+                    'targetPath': 'uploads/offers/'
+                }
+            }).then(function (resp) {
+
+                $scope.offers[0].offer_url = '/uploads/offers/' + file.$ngfName;
+
+                new Notification({
+                    message: 'Изображение загружено'
+                }, 'success');
+
+                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        };
+
+
         if ($routeParams.id !== 'create-offer') {
             $scope.currentId = $routeParams.id;
             var query = {
@@ -156,6 +192,7 @@ angular.module('resdokWebApp')
         } else {
             var query = {};
         };
+
 
         $scope.getClients();
         $scope.getTypes();

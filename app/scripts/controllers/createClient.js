@@ -8,7 +8,7 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('createClientCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification) {
+    .controller('createClientCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', 'Upload', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification, Upload) {
 
         $scope.userName = "Гость";
 
@@ -164,6 +164,38 @@ angular.module('resdokWebApp')
                     }, 'warning');
                 });
         };
+
+        // upload later on form submit or something similar
+        $scope.submit = function () {
+            if ($scope.form.file.$valid && $scope.file) {
+                $scope.upload($scope.file);
+            }
+        };
+        $scope.username = 'Coda';
+        // upload on file select or drop
+        $scope.upload = function (file) {
+            Upload.upload({
+                url: 'upload.php',
+                data: {
+                    file: file,
+                    'username': $scope.username,
+                    'targetPath': 'uploads/clients/'
+                }
+            }).then(function (resp) {
+                $scope.newClient.img = '/uploads/clients/'+file.$ngfName;
+                new Notification({
+                    message: 'Изображение загружено'
+                }, 'success');
+                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        };
+
 
 
     }]);

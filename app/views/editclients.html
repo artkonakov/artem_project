@@ -1,0 +1,24 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Картинка</th>
+                        <th>Клиент</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="client in clients">
+                        <th>
+                            <a href="#!/edit-clients/{{client.id}}"><img class="small-image" ng-src="{{client.img}}"></a>
+                        </th>
+                        <th><a href="#!/edit-clients/{{client.id}}">{{client.client.name}}</a></th>
+                        <th>{{client.description}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
