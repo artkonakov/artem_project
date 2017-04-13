@@ -45,7 +45,7 @@ angular
                 controller: 'AdminCtrl',
                 controllerAs: 'admin'
             })
-            .when('/edit', {
+            .when('/edit-offers', {
                 templateUrl: 'views/edit.html',
                 controller: 'EditCtrl',
                 controllerAs: 'edit'

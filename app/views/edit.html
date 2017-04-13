@@ -1,108 +1,59 @@
-<div class="container-fluid edit">
-    <div class="row">
-        <div class="col-md-12">
-
-            <h2>{{userName}}</h2>
+<div class="container edit">
+     <div class="row">
+        <div class="col-md-8">
+            <ol class="breadcrumb">
+                <li><a href="#!/admin">Админка</a></li>
+                <li class="active">Все акции</li>
+            </ol>
         </div>
-
+        <div class="col-md-4">
+            <a href="#!/create-offer" class="btn btn-primary pull-right">Создать акцию</a>
+        </div>
     </div>
+
     <div class="row">
         <div class="col-md-12 table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Изображение</th>
-                        
+
                         <th>Клиент</th>
-                        
+
                         <th>Заголовок</th>
-                        
+
                         <th>Истекает</th>
                         <th>Опубликовать</th>
                         <th>Обновить</th>
-                        <th>Удалить</th>
+
                     </tr>
 
                 </thead>
                 <tbody>
                     <tr ng-repeat="offer in offers">
-                        
-                        <th><a href="#!/edit-offer/{{offer.id}}"><img class="small-image" ng-src="{{offer.offer_url}}"></a></th>
 
+                        <th>
+                            <a href="#!/edit-offer/{{offer.id}}"><img class="small-image" ng-src="{{offer.offer_url}}"></a>
+                        </th>
+                        <th>
+                            <a href="#!/edit-offer/{{offer.id}}">{{offer.client.client.name}}</a>
+                        </th>
 
-                            
-                            <th contenteditable="true" ng-model="offer.client" strip-br="true" strip-tags="true" select-non-editable="true">
-                            </th>
-                         
-                            <th contenteditable="true" ng-model="offer.title" strip-br="true" strip-tags="true" select-non-editable="true">
-                            </th>
-                          
-                           
-                            <th>
-                                <input class="form-control" ng-model="offer.expires" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{offer.expires | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">
+                        <th>
+                            {{offer.title}}
+                        </th>
+                        <th>
+                            <input class="form-control" ng-model="offer.expires" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{offer.expires | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">
+                        </th>
+                        <th>
+                            <input type="checkbox" ng-model="offer.public" value="{{offer.public}}">
 
-
-                            </th>
-                            <th>
-                                <input type="checkbox" ng-model="offer.public " value="{{offer.public}}">
-
-                            </th>
-                            <th>
-                                <button class="btn btn-success" ng-click="UpdateOffers($index)">Обновить</button>
-                            </th>
-                            <th>
-                                <button class="btn btn-danger" ng-click="deleteOffer($index)">Удалить</button>
-                            </th>
-                        
+                        </th>
+                        <th>
+                            <button class="btn btn-success" ng-click="UpdateOffers($index)">Обновить</button>
+                        </th>
                     </tr>
-
-                    <tfoot>
-                        <tr>
-                            <th>
-                                <h4>Добавить новый</h4>
-                            </th>
-
-                        </tr>
-                        <tr>
-                            <th>
-                                <img class="small-image" ng-src="{{newOffer.offer_url}}">
-                            </th>
-                            <th contenteditable="true" ng-model="newOffer.offer_url" strip-br="true" strip-tags="true" select-non-editable="true" placeholder="URL">
-                                Линк
-                            </th>
-                            <th contenteditable="true" ng-model="newOffer.title" strip-br="true" strip-tags="true" select-non-editable="true">
-
-                            </th>
-                            <th contenteditable="true" ng-model="newOffer.client" strip-br="true" strip-tags="true" select-non-editable="true">
-                            </th>
-                            <th contenteditable="true" ng-model="newOffer.description" strip-br="true" strip-tags="true" select-non-editable="true">
-
-
-                            </th>
-                            <th>
-
-                                <input class="form-control" ng-model="newOffer.expires" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{offer.expires | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">
-
-                            </th>
-                            <th>
-                                <input type="checkbox" ng-model="newOffer.public" value="{{offer.public}}">
-
-                            </th>
-                            <th>
-                                <button class="btn btn-primary" ng-click="createOffer()">Создать</button>
-                            </th>
-                        </tr>
-                    </tfoot>
             </table>
-
-
-
-
         </div>
-
-    </div>
-
-    <div class="row">
-        <button ng-click="show()">SHOW</button>
     </div>
 </div>

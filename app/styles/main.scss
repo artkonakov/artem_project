@@ -320,13 +320,11 @@
             .offer-descr {
                 .offer-title {
                     height: 65px;
-                    
                     h4 {
                         height: 40px;
                         font-weight: bold;
                         line-height: 1.2;
                         font-size: 18px;
-                        
                     }
                     a {
                         color: $text;
@@ -445,6 +443,8 @@
     }
     
     .edit {
+        padding-top: 30px;
+        padding-bottom: 30px;
         .small-image {
             width: 120px;
         }
@@ -453,6 +453,15 @@
     .editclient {
         padding-top: 30px;
         padding-bottom: 30px;
+        h1 {
+            margin: 0;
+        }
+        .editclient-head {
+            margin-bottom: 20px;
+            .btn {
+                margin-top: 2px;
+            }
+        }
         .client-img {
             width: 100%;
             height: auto;
@@ -469,6 +478,32 @@
             width: 120px;
         }
         .del-btn {
-           text-align: right;
+            text-align: right;
+        }
+    }
+    
+    .admin {
+        padding-top: 30px;
+        .admin-item {
+            margin-bottom: 30px;
+            a {
+                text-decoration: none;
+                color: $main-color;
+                            }
+            h1 {
+                font-weight: bold;
+            }
+            h3 {
+                font-weight: bold;
+            }
+        }
+        .admin-item-link {
+            height: 150px;
+            background: $border;
+            padding: 10px 30px;
+            border-radius: 10px;
+            &:hover {
+                    background: $yellow;
+                }
         }
     }

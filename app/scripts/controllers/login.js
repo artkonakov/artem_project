@@ -8,7 +8,7 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('LoginCtrl', function ($scope, $stamplay) {
+    .controller('LoginCtrl',  function ($scope, $stamplay) {
 
         var data = {
             "header": "test",
@@ -48,12 +48,13 @@ angular.module('resdokWebApp')
             $stamplay.User.login($scope.credential)
                 .then(function (res) {
                     // success
-                    console.log(res)
+                  $scope.close('cancel');
                 }, function (err) {
                     // error  
                     console.log(err);
                 });
         };
+        
 
    
 
