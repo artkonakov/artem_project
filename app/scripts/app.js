@@ -80,6 +80,36 @@ angular
                 controller: 'createOfferCtrl',
                 controllerAs: 'createOffer'
             })
+            .when('/create-category', {
+                templateUrl: 'views/createcategory.html',
+                controller: 'createCategoryCtrl',
+                controllerAs: 'createCategory'
+            })
+            .when('/category/:id', {
+                templateUrl: 'views/editcategory.html',
+                controller: 'editCategoryCtrl',
+                controllerAs: 'editCategory'
+            })
+            .when('/categories', {
+                templateUrl: 'views/categories.html',
+                controller: 'CategoriesCtrl',
+                controllerAs: 'Categories'
+            })
+            .when('/types', {
+                templateUrl: 'views/types.html',
+                controller: 'typesCtrl',
+                controllerAs: 'Types'
+            })
+            .when('/create-type', {
+                templateUrl: 'views/createtype.html',
+                controller: 'createTypeCtrl',
+                controllerAs: 'createType'
+            })
+            .when('/types/:id', {
+                templateUrl: 'views/edittype.html',
+                controller: 'editTypeCtrl',
+                controllerAs: 'editType'
+            })
             .otherwise({
                 redirectTo: '/'
             });

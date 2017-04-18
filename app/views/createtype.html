@@ -1,0 +1,36 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#!/admin">Админка</a></li>
+                <li><a href="#!/types">Типы</a></li>
+                <li class="active">Создать тип</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 client-form">
+
+
+            <label class="control-label expires">Название</label>
+            <input type="text" class="form-control" ng-model="newType.type.title">
+
+            <label class="control-label expires">Название английскими буквами</label>
+            <input type="text" class="form-control" ng-model="newType.type.url">
+
+             <input class="expires" type="checkbox" ng-model="newType.show" value="{{newType.show}}"> Показывать
+        </div>
+
+        <div class="col-md-4 client-form">
+            
+
+        </div>
+        <div class="col-md-4 client-form">
+            <a class="btn btn-success expires pull-right" ng-click="createNewType()">Создать тип</a>
+        </div>
+    </div>
+    
+   
+    
+</div>

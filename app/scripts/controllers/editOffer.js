@@ -106,12 +106,12 @@ angular.module('resdokWebApp')
         };
 
         $scope.deleteOffer = function () {
-                       
+
             $stamplay.Object("offers").remove($scope.offers[0].id)
                 .then(function (res) {
                     // success
                     $location.path('/edit');
-                   
+
                 }, function (err) {
                     // error
                     console.log(err);
@@ -134,6 +134,7 @@ angular.module('resdokWebApp')
             $stamplay.Object("offers").save($scope.newOffer)
                 .then(function (res) {
                     // success
+                    $scope.submit();
                     $scope.newOffer = {};
                     new Notification({
                         message: 'Новая акция создана'
@@ -182,6 +183,7 @@ angular.module('resdokWebApp')
             });
         };
 
+       
 
         if ($routeParams.id !== 'create-offer') {
             $scope.currentId = $routeParams.id;

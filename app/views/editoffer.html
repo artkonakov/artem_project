@@ -38,6 +38,10 @@
 
             <label class="control-label ">Размер скидки</label>
             <input type="text" class="form-control" ng-model="offers[0].discount">
+            <label class="control-label expires">Новая цена</label>
+            <input type="text" class="form-control " ng-model="offers[0].new_price">
+            <label class="control-label expires">Старая цена</label>
+            <input type="text" class="form-control " ng-model="offers[0].old_price">
             <label class="control-label expires">Промокод (если есть)</label>
             <input type="text" class="form-control" ng-model="offers[0].promocode">
             <label class="control-label expires">Штрихкод (если есть)</label>
@@ -59,7 +63,7 @@
             </select>
 
             <label class="control-label expires">Тип</label>
-            <select class="form-control" ng-model="offers[0].type" ng-options="type.type.title for type in types track by type.type.title">
+            <select class="form-control" ng-model="offers[0].type" ng-options="type.type.title for type in types track by type.type.title ">
            </select>
 
             <label class="col-md-6 expires">

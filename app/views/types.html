@@ -1,0 +1,51 @@
+<div class="container edit">
+    <div class="row">
+        <div class="col-md-8">
+            <ol class="breadcrumb">
+                <li><a href="#!/admin">Админка</a></li>
+                <li class="active">Типы акций</li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <a href="#!/create-type" class="btn btn-primary pull-right">Создать тип</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+
+                        <th>Название английскими буквами</th>
+
+                        <th>Показывать</th>
+                        <th>Обновить</th>
+
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="type in types">
+
+                        <th>
+                            <a href="#!/types/{{type.id}}">{{type.type.title}}</a>
+                        </th>
+                        <th>
+                            {{type.type.url}}
+                        </th>
+
+                        <th>
+                            <input type="checkbox" ng-model="type.show" value="{{type.show}}">
+
+                        </th>
+                        <th>
+                            <button class="btn btn-success" ng-click="UpdateTypes($index)">Обновить</button>
+                        </th>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</div>

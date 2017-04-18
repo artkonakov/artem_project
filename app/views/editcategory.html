@@ -1,0 +1,37 @@
+<div class="container editclient">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#!/admin">Админка</a></li>
+                <li><a href="#!/categories">Категории</a></li>
+                <li class="active">Редактирование категории</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 client-form">
+
+
+            <label class="control-label expires">Название</label>
+            <input type="text" class="form-control" ng-model="category[0].category.title">
+
+            <label class="control-label expires">Название английскими буквами</label>
+            <input type="text" class="form-control" ng-model="category[0].category.url">
+
+             
+             <input class="expires" type="checkbox" ng-model="category[0].show" value="{{category[0].show}}"> Показывать
+        </div>
+
+        <div class="col-md-4 client-form">
+            
+
+        </div>
+        <div class="col-md-4 client-form">
+            <a class="btn btn-success expires pull-right" ng-click="updateCategory()">Обновить категорию</a>
+        </div>
+    </div>
+    
+   
+    
+</div>

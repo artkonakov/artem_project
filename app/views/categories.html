@@ -1,0 +1,51 @@
+<div class="container edit">
+    <div class="row">
+        <div class="col-md-8">
+            <ol class="breadcrumb">
+                <li><a href="#!/admin">Админка</a></li>
+                <li class="active">Категории</li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <a href="#!/create-category" class="btn btn-primary pull-right">Создать категорию</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+
+                        <th>Название английскими буквами</th>
+
+                        <th>Показывать</th>
+                        <th>Обновить</th>
+
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="category in categories">
+
+                        <th>
+                            <a href="#!/category/{{category.id}}">{{category.category.title}}</a>
+                        </th>
+                        <th>
+                            {{category.category.url}}
+                        </th>
+
+                        <th>
+                            <input type="checkbox" ng-model="category.show" value="{{category.show}}">
+
+                        </th>
+                        <th>
+                            <button class="btn btn-success" ng-click="UpdateCategories($index)">Обновить</button>
+                        </th>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -36,11 +36,11 @@
                             <a href="#!/edit-offer/{{offer.id}}"><img class="small-image" ng-src="{{offer.offer_url}}"></a>
                         </th>
                         <th>
-                            <a href="#!/edit-offer/{{offer.id}}">{{offer.client.client.name}}</a>
+                            <a href="#!/edit-clients/{{offer.client.id}}">{{offer.client.client.name}}</a>
                         </th>
 
                         <th>
-                            {{offer.title}}
+                            <a href="#!/edit-offer/{{offer.id}}">{{offer.title}}</a>
                         </th>
                         <th>
                             <input class="form-control" ng-model="offer.expires" ng-model-options="{ updateOn: 'blur' }" format="DD-MM-YYYY HH:mm:ss" placeholder="{{offer.expires | date: 'dd-MM-yyyy HH:mm:ss' }}" locale='ru' moment-picker="ctrl.input">

@@ -8,14 +8,13 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('createOfferCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification) {
+    .controller('CategoriesCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', 'Upload', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification, Upload) {
 
         $scope.userName = "Гость";
 
-        $scope.newOffer = {
-            "offer_url": "/images/default.jpg",
-            "likes": 0,
-        };
+
+
+
 
         //  $stamplay.User.socialLogin("auth0") ;  
 
@@ -71,7 +70,7 @@ angular.module('resdokWebApp')
         };
 
         $scope.getTypes = function () {
-            $stamplay.Object("types").get()
+            $stamplay.Object("types").get(query)
                 .then(function (res) {
                     // success
                     $scope.$apply(function () {
@@ -84,7 +83,7 @@ angular.module('resdokWebApp')
         };
 
         $scope.getCategories = function () {
-            $stamplay.Object("categories").get()
+            $stamplay.Object("categories").get(query)
                 .then(function (res) {
                     // success
                     $scope.$apply(function () {
@@ -138,64 +137,27 @@ angular.module('resdokWebApp')
             });
         };
 
-        $scope.createNewOffer = function () {
-            $stamplay.Object("offers").save($scope.newOffer)
+        $scope.UpdateCategories = function ($index) {
+            delete $scope.categories[$index].$$hashKey;
+            
+            $stamplay.Object("categories").patch($scope.categories[$index]._id, $scope.categories[$index])
                 .then(function (res) {
                     // success
-                    $scope.submit();
-                    $scope.newOffer = {
-                        "offer_url": "/images/default.jpg",
-                        "likes": 0,
-                    };
+                    console.log(res);
                     new Notification({
-                        message: 'Новая акция создана'
+                        message: 'Категория обновлена'
                     }, 'success');
+                 $scope.getCategories();
                 }, function (err) {
                     // error
-                    new Notification({
-                        message: err
-                    }, 'warning');
+                    console.log(err);
                 });
+
         };
 
-        // upload later on form submit or something similar
-        $scope.submit = function () {
-            if ($scope.form.file.$valid && $scope.file) {
-                $scope.upload($scope.file);
-            }
-        };
+        var query = {};
 
 
-        // upload on file select or drop
-        $scope.upload = function (file) {
-            $scope.username = 'user';
-            Upload.upload({
-                url: 'upload.php',
-                data: {
-                    file: file,
-                    'username': $scope.username,
-                    'targetPath': 'uploads/offers/'
-                }
-            }).then(function (resp) {
-
-                $scope.offers[0].offer_url = '/uploads/offers/' + file.$ngfName;
-
-                new Notification({
-                    message: 'Изображение загружено'
-                }, 'success');
-
-                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-            });
-        };
-
-        $scope.getClients();
-        $scope.getTypes();
         $scope.getCategories();
 
     }]);

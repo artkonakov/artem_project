@@ -8,13 +8,14 @@
  * Controller of the resdokWebApp
  */
 angular.module('resdokWebApp')
-    .controller('createOfferCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification) {
+    .controller('createCategoryCtrl', ['$scope', 'ModalService', '$stamplay', '$route', '$routeParams', 'Notification', 'Upload', function ($scope, ModalService, $stamplay, $route, $routeParams, Notification, Upload) {
 
         $scope.userName = "Гость";
 
-        $scope.newOffer = {
-            "offer_url": "/images/default.jpg",
-            "likes": 0,
+        
+      
+        $scope.newCategory = {
+          
         };
 
         //  $stamplay.User.socialLogin("auth0") ;  
@@ -138,17 +139,13 @@ angular.module('resdokWebApp')
             });
         };
 
-        $scope.createNewOffer = function () {
-            $stamplay.Object("offers").save($scope.newOffer)
+        $scope.createNewCategory = function () {
+            $stamplay.Object("categories").save($scope.newCategory)
                 .then(function (res) {
                     // success
-                    $scope.submit();
-                    $scope.newOffer = {
-                        "offer_url": "/images/default.jpg",
-                        "likes": 0,
-                    };
+                    $scope.newCategory = {};
                     new Notification({
-                        message: 'Новая акция создана'
+                        message: 'Новая категория создана'
                     }, 'success');
                 }, function (err) {
                     // error
@@ -158,44 +155,8 @@ angular.module('resdokWebApp')
                 });
         };
 
-        // upload later on form submit or something similar
-        $scope.submit = function () {
-            if ($scope.form.file.$valid && $scope.file) {
-                $scope.upload($scope.file);
-            }
-        };
+        
 
 
-        // upload on file select or drop
-        $scope.upload = function (file) {
-            $scope.username = 'user';
-            Upload.upload({
-                url: 'upload.php',
-                data: {
-                    file: file,
-                    'username': $scope.username,
-                    'targetPath': 'uploads/offers/'
-                }
-            }).then(function (resp) {
-
-                $scope.offers[0].offer_url = '/uploads/offers/' + file.$ngfName;
-
-                new Notification({
-                    message: 'Изображение загружено'
-                }, 'success');
-
-                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-            });
-        };
-
-        $scope.getClients();
-        $scope.getTypes();
-        $scope.getCategories();
 
     }]);
